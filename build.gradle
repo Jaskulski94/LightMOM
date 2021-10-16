@@ -1,19 +1,119 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.5.5'
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
 }
 
-group 'pl.hexagon.manufacturing-operations-management'
-version '1.0-SNAPSHOT'
+subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
 
-repositories {
-    mavenCentral()
+    group = 'pl.hexagon.manufacturing-operations-management'
+    version = '0.0.1-SNAPSHOT'
+//    sourceCompatibility = '17'
+
+    test {
+        useJUnitPlatform()
+    }
+
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+bootJar {
+    enabled = false
 }
 
-test {
-    useJUnitPlatform()
+allprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
 }
+
+project(':manufacturingorders') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+        compileOnly 'org.projectlombok:lombok:1.18.22'
+        annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+        testCompileOnly 'org.projectlombok:lombok:1.18.22'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    }
+}
+
+
+
+
+
+
+
+//plugins {
+//    id 'java'
+//    id 'org.springframework.boot' version '2.5.5'
+//    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+//}
+//
+//subprojects {
+//    apply plugin: 'org.springframework.boot'
+//    apply plugin: 'io.spring.dependency-management'
+//    apply plugin: 'java-library'
+//
+//    group = 'pl.hexagon.manufacturing-operations-management'
+//    version = '0.0.1-SNAPSHOT'
+//
+//    test {
+//        useJUnitPlatform()
+//    }
+//}
+//
+//bootJar {
+//    enabled = false
+//}
+//
+//allprojects {
+//    repositories {
+//        mavenCentral()
+//        maven {
+//            url "https://plugins.gradle.org/m2/"
+//        }
+//    }
+//}
+//
+//project(':manufacturingorders') {
+//    dependencies {
+//        implementation 'org.springframework.boot:spring-boot-starter-web'
+//        testImplementation('org.springframework.boot:spring-boot-starter-test')
+//
+//        compileOnly 'org.projectlombok:lombok:1.18.22'
+//        annotationProcessor 'org.projectlombok:lombok:1.18.22'
+//
+//        testCompileOnly 'org.projectlombok:lombok:1.18.22'
+//        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+//    }
+//}
+//
+//dependencies {
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+//
+//    compileOnly 'org.projectlombok:lombok:1.18.22'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+//
+//    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+//    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+//}
+//
+//
+//test {
+//    useJUnitPlatform()
+//}
