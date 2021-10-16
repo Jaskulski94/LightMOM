@@ -1,24 +1,20 @@
 package pl.hexagon.lightmom.domain;
 
-import lombok.*;
-import lombok.experimental.FieldDefaults;
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-//@FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
-//@AllArgsConstructor
-//@Getter(AccessLevel.PACKAGE)
-//@Setter(AccessLevel.PACKAGE)
 public class Order {
     String id;
     String name;
-    String status;
+    OrderStatus status;
 
     Date plannedStart;
     Date plannedEnd;
     Date actualStart;
     Date actualEnd;
 
+    List<Product> productList = new ArrayList<>();
     Double plannedQuantity;
     Double producedQuantity;
     String unit;
@@ -33,14 +29,18 @@ public class Order {
         this.unit = unit;
         this.productId = productId;
 
-        this.status = "Pending";
+        this.status = OrderStatus.PENDING;
+    }
+
+    public void start(){
+        this.status = OrderStatus.IN_PROGRESS;
     }
 
     public void complete(){
-        this.status = "Completed";
+        this.status = OrderStatus.COMPLETED;
     }
 
     public void cancel(){
-        this.status = "Canceled";
+        this.status = OrderStatus.CANCELED;
     }
 }

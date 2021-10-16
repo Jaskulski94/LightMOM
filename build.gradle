@@ -48,6 +48,8 @@ project(':manufacturingorders') {
 
         testCompileOnly 'org.projectlombok:lombok:1.18.22'
         testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+        implementation group: 'javax.measure', name: 'unit-api', version: '2.1.3'
     }
 }
 
