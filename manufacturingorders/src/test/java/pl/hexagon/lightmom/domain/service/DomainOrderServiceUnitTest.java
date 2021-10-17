@@ -3,10 +3,12 @@ package pl.hexagon.lightmom.domain.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.hexagon.lightmom.domain.Order;
+import pl.hexagon.lightmom.domain.OrderStatus;
 import pl.hexagon.lightmom.domain.repository.OrderRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class DomainOrderServiceUnitTest {
 
@@ -28,4 +30,11 @@ class DomainOrderServiceUnitTest {
         String id = domainOrderService.createOrder(orderId, plannedQuantity, productId);
         assertEquals(orderId, id);
     }
+
+//    @Test
+//    void shouldReturnOrderStatusCompleteWhenCompleted(){
+//        String id = domainOrderService.createOrder(orderId, plannedQuantity, productId);
+//        OrderStatus orderStatus = domainOrderService.completeOrder(id);
+//        assertEquals(OrderStatus.COMPLETED, orderStatus);
+//    }
 }

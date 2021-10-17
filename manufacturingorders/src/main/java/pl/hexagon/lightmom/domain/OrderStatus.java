@@ -1,6 +1,6 @@
 package pl.hexagon.lightmom.domain;
 
-enum OrderStatus {
+public enum OrderStatus {
     PENDING,
     IN_PROGRESS,
     COMPLETED,

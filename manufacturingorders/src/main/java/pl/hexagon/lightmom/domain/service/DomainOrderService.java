@@ -1,6 +1,7 @@
 package pl.hexagon.lightmom.domain.service;
 
 import pl.hexagon.lightmom.domain.Order;
+import pl.hexagon.lightmom.domain.OrderStatus;
 import pl.hexagon.lightmom.domain.repository.OrderRepository;
 
 public class DomainOrderService implements OrderService {
@@ -19,8 +20,12 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public void completeOrder(String orderId) {
+    public OrderStatus completeOrder(String orderId) {
         Order order = getOrder(orderId);
+        order.complete();
+
+        orderRepository.save(order);
+        return order.getStatus();
     }
 
     private Order getOrder(String orderId) {
