@@ -1,12 +1,14 @@
 package pl.hexagon.lightmom.domain;
 
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 
-@AllArgsConstructor
-public class Product {
-    String id;
-    String name;
-    String defaultUnitOfMeasure;
+@Getter(AccessLevel.PACKAGE)
+@Setter(AccessLevel.PACKAGE)
+public class Product extends Material{
 
-
+    public Product(String id, String name, String defaultUnitOfMeasure) {
+        super(id, name, defaultUnitOfMeasure);
+    }
 }

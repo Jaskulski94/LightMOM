@@ -1,25 +1,35 @@
 package pl.hexagon.lightmom.domain;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+//@FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
+@AllArgsConstructor
+@Getter(AccessLevel.PACKAGE)
+@Setter(AccessLevel.PACKAGE)
 public class Order {
-    String id;
-    String name;
-    OrderStatus status;
+    private String id;
+    private String name;
+    private OrderStatus status;
 
-    Date plannedStart;
-    Date plannedEnd;
-    Date actualStart;
-    Date actualEnd;
+    private Date plannedStart;
+    private Date plannedEnd;
+    private Date actualStart;
+    private Date actualEnd;
 
-    List<Product> productList = new ArrayList<>();
-    Double plannedQuantity;
-    Double producedQuantity;
-    String unit;
-    String productId;
+    private Double plannedQuantity;
+    private Double producedQuantity;
+    private String unit;
+    private String productId;
 
+    private ItemBatch itemBatch;
 
     public Order(String id, String name, Date plannedStart, Double plannedQuantity, String unit, String productId) {
         this.id = id;
@@ -30,6 +40,7 @@ public class Order {
         this.productId = productId;
 
         this.status = OrderStatus.PENDING;
+        this.itemBatch = new ItemBatch(productId, plannedQuantity);
     }
 
     public void start(){
