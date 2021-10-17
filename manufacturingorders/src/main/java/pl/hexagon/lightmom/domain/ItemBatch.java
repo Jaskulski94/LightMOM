@@ -14,7 +14,7 @@ public class ItemBatch implements SerialNumbered{
     private String serialNumber;
     private List<Item> itemList = new ArrayList<>();
 
-    public ItemBatch(String productId, Double quantity){
+    public ItemBatch(String productId, Integer quantity){
         this.productId = productId;
         this.serialNumber = this.generateSerialNumber(productId);
         for (int i = 0; i < quantity; i++)

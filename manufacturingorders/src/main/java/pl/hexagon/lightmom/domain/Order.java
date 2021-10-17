@@ -20,14 +20,14 @@ public class Order {
     private Date actualStart;
     private Date actualEnd;
 
-    private Double plannedQuantity;
-    private Double producedQuantity;
+    private Integer plannedQuantity;
+    private Integer producedQuantity;
     private String unit;
     private String productId;
 
     private ItemBatch itemBatch;
 
-    public Order(String id, Double plannedQuantity, String productId) {
+    public Order(String id, Integer plannedQuantity, String productId) {
         this.id = id;
         this.plannedQuantity = plannedQuantity;
         this.productId = productId;

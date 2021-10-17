@@ -11,7 +11,7 @@ public class DomainOrderService implements OrderService {
     }
 
     @Override
-    public String createOrder(String orderId, Double plannedQuantity, String productId) {
+    public String createOrder(String orderId, Integer plannedQuantity, String productId) {
         Order order = new Order(orderId, plannedQuantity, productId);
         orderRepository.save(order);
 
